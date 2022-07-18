@@ -98,7 +98,6 @@ const createPlace = async (req, res, next) => {
     coordinates,
     region,
     country,
-    // address,
     creator,
   } = req.body;
 
