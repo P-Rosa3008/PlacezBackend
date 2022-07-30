@@ -81,7 +81,7 @@ const signup = async (req, res, next) => {
   try {
     token = jwt.sign(
       { userId: createdUser.id, email: createdUser.email },
-      "supersecret_dont_share",
+      process.env.JWT_KEY,
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -132,7 +132,7 @@ const login = async (req, res, next) => {
 
   if (!isValidPassword) {
     const error = new HttpError(
-      "Invalid credentials, could not log you inn",
+      "Invalid credentials, could not log you in",
       500
     );
     return next(error);
@@ -145,7 +145,7 @@ const login = async (req, res, next) => {
         userId: existingUser.id,
         email: existingUser.mail,
       },
-      "supersecret_dont_share",
+      process.env.JWT_KEY,
       { expiresIn: "6h" }
     );
   } catch (err) {
@@ -179,14 +179,9 @@ const addProfileImage = async (req, res, next) => {
     return next(error);
   }
 
-  console.log("USERONE" + user);
-
   const userProfileImage = req.files[0].path;
-  // userProfileImage.push(req.files[0].path);
 
   user.avatar = userProfileImage;
-
-  console.log("USERTWO" + user);
 
   try {
     await user.save();

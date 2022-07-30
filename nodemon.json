@@ -1,0 +1,8 @@
+{
+  "env": {
+    "DB_USER": "P-Rosa3008",
+    "DB_PASSWORD": "Pedro.rosa30081999",
+    "DB_NAME": "placez",
+    "JWT_KEY": "supersecret_dont_share"
+  }
+}
