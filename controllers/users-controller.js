@@ -166,8 +166,10 @@ const login = async (req, res, next) => {
 
 const addProfileImage = async (req, res, next) => {
   const username = req.params.username;
-
   let user;
+
+  const { image } = req.body;
+
   try {
     user = await User.findOne({ username: username });
   } catch (err) {
@@ -178,7 +180,7 @@ const addProfileImage = async (req, res, next) => {
     return next(error);
   }
 
-  const userProfileImage = req.files[0].path;
+  const userProfileImage = image;
 
   user.avatar = userProfileImage;
 
