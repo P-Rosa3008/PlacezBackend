@@ -170,7 +170,6 @@ const addProfileImage = async (req, res, next) => {
   let user;
   try {
     user = await User.findOne({ username: username });
-    console.log(user);
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not find user",
