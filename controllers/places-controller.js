@@ -170,6 +170,8 @@ const createPlace = async (req, res, next) => {
 const addImage = async (req, res, next) => {
   const placeId = req.params.placeId;
 
+  const { image } = req.body;
+
   let place;
   try {
     place = await Place.findById(placeId);
@@ -181,7 +183,7 @@ const addImage = async (req, res, next) => {
   }
 
   const placeImages = [...place.image];
-  placeImages.push(req.files[0].path);
+  placeImages.push(image);
 
   place.image = placeImages;
 
