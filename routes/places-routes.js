@@ -18,7 +18,19 @@ router.get("/:userId/places", placesControllers.getPlacesByUserID);
 
 router.use(checkAuth);
 
-router.post("/", placesControllers.createPlace);
+router.post(
+  "/",
+  fileUpload.any("image"),
+  [
+    // check("title").not().isEmpty(),
+    // check("type").not().isEmpty(),
+    // check("advancedOptions"),
+    // check("description").isLength({ min: 5 }),
+    // check("coordinates").not().isEmpty(),
+    // check("creator"),
+  ],
+  placesControllers.createPlace
+);
 
 router.patch(
   "/images/:placeId",
