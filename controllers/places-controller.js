@@ -173,7 +173,6 @@ const addImage = async (req, res, next) => {
   let place;
   try {
     place = await Place.findById(placeId);
-    console.log(place);
   } catch (err) {
     console.log(err);
     const error = new HttpError("Something went wrong, could not update", 500);
