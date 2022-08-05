@@ -120,12 +120,10 @@ const createPlace = async (req, res, next) => {
     type: type,
     description: description,
     advancedOptions: JSON.parse(advancedOptions),
-    // rating: rating,
-    // description,
+
     location: JSON.parse(coordinates),
     region: region,
     country: country,
-    // address,
     creator: req.userData.userId,
     image: image,
     date: dateFormatted,
